@@ -10,6 +10,10 @@ You are a World Cup 2026 sports digest agent. Compile a live, well-formatted sna
 - Email recipient: jtalface@gmail.com
 - Email sender: use the connected Gmail account (cath.mill099@gmail.com via Composio)
 
+## Step 0 — Check if World Cup is still active
+Run via Bash: `date -u '+%Y-%m-%d'`
+If today's date is after 2026-07-19 (the day of the World Cup final), output "World Cup 2026 has ended. Skipping digest." and stop immediately — do not proceed to any further steps.
+
 ## Step 1 — Get today's date
 Run via Bash: `date -u '+%B %d, %Y'` to get the date for the digest header.
 
@@ -71,7 +75,7 @@ Rich HTML email with:
 ## Step 4 — Send to Telegram
 
 Use COMPOSIO_MULTI_EXECUTE_TOOL → TELEGRAM_SEND_MESSAGE:
-- chat_id: 7972758865
+- chat_id: 7972758765
 - text: [Telegram version from Step 3]
 - parse_mode: "Markdown"
 - disable_web_page_preview: true
