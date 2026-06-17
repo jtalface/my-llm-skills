@@ -28,6 +28,8 @@ After each search call, call `firecrawl_search_feedback` with the returned searc
 
 ## Step 3 — Compile the digest
 
+Assemble two versions of the report from the data gathered above.
+
 ### Telegram version (Markdown, max 4096 chars per message)
 
 ```
@@ -39,6 +41,7 @@ After each search call, call `firecrawl_search_feedback` with the returned searc
 *Group A*
 Pos | Team       | P | W | D | L | GD | Pts
  1  | USA        | 3 | 2 | 1 | 0 | +4 |  7
+ 2  | Mexico     | 3 | 1 | 1 | 1 | +1 |  4
 ...
 
 📅 *MATCH SCHEDULE*
@@ -58,9 +61,7 @@ Pos | Team       | P | W | D | L | GD | Pts
 _Data current as of [timestamp]_
 ```
 
-If the full message exceeds 4096 characters, split into two messages:
-- Message 1: header + group standings
-- Message 2: match schedule + news + highlight
+If the full message exceeds 4096 characters, split into two messages: standings first, then schedule + news.
 
 ### Email version (HTML)
 
@@ -75,12 +76,14 @@ Rich HTML email with:
 ## Step 4 — Send to Telegram
 
 Use COMPOSIO_MULTI_EXECUTE_TOOL → TELEGRAM_SEND_MESSAGE:
-- chat_id: 7972758765
+- chat_id: 7972758865
 - text: [Telegram version from Step 3]
 - parse_mode: "Markdown"
 - disable_web_page_preview: true
 
 If message > 4096 chars, send in two calls (standings first, then schedule + news).
+
+Record the result: telegram_ok = true/false, telegram_error = error message if failed.
 
 ## Step 5 — Send email
 
@@ -90,9 +93,29 @@ Use COMPOSIO_MULTI_EXECUTE_TOOL → GMAIL_SEND_EMAIL:
 - body: [HTML version from Step 3]
 - is_html: true
 
-## Step 6 — Confirm
+Record the result: email_ok = true/false, email_error = error message if failed.
 
-Report back:
-- ✅ Telegram: delivered / ❌ error
-- ✅ Email: delivered to jtalface@gmail.com / ❌ error
-- Source freshness (when the data was last updated)
+## Step 6 — Cross-channel failure notification
+
+If either delivery failed, use the OTHER channel to send a failure alert:
+
+**If Telegram failed but email succeeded** → send a follow-up email:
+- recipient_email: jtalface@gmail.com
+- subject: "⚠️ World Cup Digest — Telegram delivery failed [Today's Date]"
+- body: `<p>Your World Cup digest was compiled successfully but <strong>Telegram delivery failed</strong>.</p><p><strong>Error:</strong> [telegram_error]</p><p>Check your Composio Telegram connection at claude.ai/customize/connectors</p>`
+- is_html: true
+
+**If email failed but Telegram succeeded** → send a Telegram message:
+- chat_id: 7972758865
+- text: "⚠️ *World Cup Digest — Email delivery failed*\n\nError: [email_error]\n\nCheck your Composio Gmail connection at claude.ai/customize/connectors"
+- parse_mode: "Markdown"
+
+**If both failed** → log the errors only. Nothing can be done programmatically.
+
+## Step 7 — Final summary
+
+Output:
+- Telegram digest: ✅ delivered / ❌ [error]
+- Email digest: ✅ delivered to jtalface@gmail.com / ❌ [error]
+- Failure alert sent: ✅ [channel used] / N/A (all succeeded) / ❌ both channels failed
+- Data freshness: [when the World Cup data was last updated according to sources]
