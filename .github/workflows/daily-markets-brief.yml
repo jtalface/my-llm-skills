@@ -1,0 +1,33 @@
+name: Daily Pre-Market Brief
+
+on:
+  schedule:
+    # 7:40am ET (EDT = UTC-4 → 11:40 UTC, covers Mar–Nov)
+    # In winter (EST = UTC-5) this fires at 6:40am ET — still well before market open
+    - cron: '40 11 * * 1-5'
+  workflow_dispatch:
+    # Manual trigger for testing — run from Actions tab anytime
+
+jobs:
+  run-brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r markets-briefing/requirements.txt
+
+      - name: Run Pre-Market Brief
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: python markets-briefing/runner.py
