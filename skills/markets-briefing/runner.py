@@ -14,8 +14,9 @@ import os
 import sys
 import json
 import requests
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import anthropic
 from firecrawl import FirecrawlApp
@@ -33,8 +34,6 @@ MARKET_HOLIDAYS = {
     "2027-11-25", "2027-12-24",
 }
 
-# Use ET time for holiday check (UTC-5/UTC-4)
-from zoneinfo import ZoneInfo
 et_now = datetime.now(ZoneInfo("America/New_York"))
 today_str = et_now.strftime("%Y-%m-%d")
 today_display = et_now.strftime("%A, %B %d, %Y")
@@ -43,7 +42,7 @@ if today_str in MARKET_HOLIDAYS:
     print(f"NYSE holiday today ({today_str}) — no brief sent.")
     sys.exit(0)
 
-if et_now.weekday() >= 5:  # Saturday=5, Sunday=6
+if et_now.weekday() >= 5:
     print(f"Weekend ({today_str}) — no brief sent.")
     sys.exit(0)
 
@@ -57,7 +56,6 @@ COMPOSIO_BASE = "https://backend.composio.dev/api/v1"
 
 # ── Composio REST helper ──────────────────────────────────────────────────────
 def composio_execute(action_slug: str, params: dict) -> dict:
-    """Execute a Composio action via REST API."""
     resp = requests.post(
         f"{COMPOSIO_BASE}/actions/{action_slug}/execute",
         headers={
@@ -147,20 +145,18 @@ def handle_tool(name: str, inp: dict) -> str:
                     "is_html": inp.get("is_html", True),
                 },
             )
-            print(f"  Gmail result: {result.get('successfull', result.get('success', '?'))}")
+            print(f"  Gmail: {result.get('successfull', result.get('success', result))}")
             return json.dumps(result)
 
         elif name == "send_telegram":
             msg = inp["message"]
-            # Try TELEGRAM_SEND_MESSAGE first, fall back to TELEGRAM_SENDMESSAGE
             for action in ["TELEGRAM_SEND_MESSAGE", "TELEGRAM_SENDMESSAGE", "TELEGRAM_SEND_A_MESSAGE"]:
                 try:
                     result = composio_execute(action, {"message": msg, "text": msg})
-                    print(f"  Telegram ({action}) result: {result.get('successfull', result.get('success', '?'))}")
+                    print(f"  Telegram ({action}): {result.get('successfull', result.get('success', result))}")
                     return json.dumps(result)
                 except Exception as e:
-                    print(f"  Telegram action {action} failed: {e}")
-                    continue
+                    print(f"  Telegram {action} failed: {e}")
             return json.dumps({"error": "All Telegram action slugs failed"})
 
         else:
@@ -170,7 +166,7 @@ def handle_tool(name: str, inp: dict) -> str:
         print(f"  Tool {name} error: {e}")
         return json.dumps({"error": str(e)})
 
-# ── Read the skill prompt ─────────────────────────────────────────────────────
+# ── Read skill prompt ───────────────────────────────────────────────────────────
 skill_path = Path(__file__).parent / "SKILL.md"
 skill_content = skill_path.read_text(encoding="utf-8")
 
@@ -190,7 +186,7 @@ Execute the following skill completely. Ignore any MCP-style tool references (mc
 
 # ── Agentic loop ──────────────────────────────────────────────────────────────
 messages = [{"role": "user", "content": prompt}]
-MAX_ITERATIONS = 50  # safety cap
+MAX_ITERATIONS = 50
 
 for i in range(MAX_ITERATIONS):
     print(f"Iteration {i + 1}...")
@@ -224,5 +220,5 @@ for i in range(MAX_ITERATIONS):
         print(f"Unexpected stop reason: {response.stop_reason}")
         sys.exit(1)
 
-print("⚠️  Hit max iterations limit.")
+print("⚠️ Hit max iterations limit.")
 sys.exit(1)

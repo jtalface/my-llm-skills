@@ -23,11 +23,11 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r markets-briefing/requirements.txt
+        run: pip install -r skills/markets-briefing/requirements.txt
 
       - name: Run Pre-Market Brief
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
-        run: python markets-briefing/runner.py
+        run: python skills/markets-briefing/runner.py
