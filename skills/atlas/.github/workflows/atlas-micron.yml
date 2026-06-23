@@ -1,0 +1,36 @@
+name: Atlas Micron Weekly Research
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Every Monday at 9:00 AM UTC
+  workflow_dispatch:      # Allow manual triggering
+
+jobs:
+  atlas-micron:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: anthropics/claude-code-action@beta
+        with:
+          prompt: /atlas Micron to:jtalface@gmail.com
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          mcp_config: |
+            {
+              "mcpServers": {
+                "firecrawl": {
+                  "command": "npx",
+                  "args": ["-y", "firecrawl-mcp"],
+                  "env": {
+                    "FIRECRAWL_API_KEY": "${{ secrets.FIRECRAWL_API_KEY }}"
+                  }
+                },
+                "composio": {
+                  "command": "npx",
+                  "args": ["-y", "composio-mcp", "gmail"],
+                  "env": {
+                    "COMPOSIO_API_KEY": "${{ secrets.COMPOSIO_API_KEY }}"
+                  }
+                }
+              }
+            }
