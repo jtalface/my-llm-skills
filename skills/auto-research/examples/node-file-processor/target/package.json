@@ -1,0 +1,13 @@
+{
+  "name": "node-file-processor",
+  "version": "1.0.0",
+  "description": "Markdown indexer — builds a JSON index from a directory of .md files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js ./docs",
+    "test": "node index.js ./docs && node -e \"const o=require('./output.json'); console.log('ok:', o.total, 'files indexed');\" "
+  },
+  "dependencies": {
+    "glob": "^8.1.0"
+  }
+}

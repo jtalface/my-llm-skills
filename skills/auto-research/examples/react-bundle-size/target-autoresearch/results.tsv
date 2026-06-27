@@ -1,0 +1,7 @@
+commit	bundle_kb	notes	status	description
+baseline	455.6	466KB JS + 0.10KB CSS	keep	baseline (unoptimized)
+exp1	394.7	-60.9KB: removed moment, axios, uuid	keep	replace moment with Intl/Date, uuid→crypto.randomUUID, remove axios
+exp2	323.1	-71.6KB: removed lodash, native JS arrays	keep	replace lodash with native array methods in all components
+exp3	145.7	-177.4KB: replaced chart.js+react-chartjs-2 with inline SVG	keep	inline SVG bar+doughnut charts, zero chart deps
+exp4	25.5	-120.2KB: Preact/compat alias replaces react+react-dom	keep	add preact, alias react/react-dom to preact/compat in vite.config
+exp5	19.6	-5.9KB: native preact direct (no compat), @preact/preset-vite	keep	replace preact/compat alias with @preact/preset-vite + direct preact imports

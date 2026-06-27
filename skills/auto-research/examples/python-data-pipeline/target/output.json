@@ -1,0 +1,207 @@
+{
+  "generated": "2026-06-27T00:44:36Z",
+  "total_orders": 100000,
+  "total_revenue": 138618413.0,
+  "avg_order_value": 1386.18,
+  "categories": {
+    "Clothing": {
+      "count": 12358,
+      "total_revenue": 17231296.81,
+      "total_qty": 68039,
+      "avg_revenue": 1394.34,
+      "median_revenue": 1076.75,
+      "std_dev": 1148.77,
+      "min": 5.75,
+      "max": 4998.4
+    },
+    "Books": {
+      "count": 12304,
+      "total_revenue": 16989364.59,
+      "total_qty": 67829,
+      "avg_revenue": 1380.8,
+      "median_revenue": 1048.68,
+      "std_dev": 1144.71,
+      "min": 5.04,
+      "max": 4999.5
+    },
+    "Electronics": {
+      "count": 12498,
+      "total_revenue": 17459957.32,
+      "total_qty": 68994,
+      "avg_revenue": 1397.02,
+      "median_revenue": 1076.95,
+      "std_dev": 1150.84,
+      "min": 5.21,
+      "max": 4999.1
+    },
+    "Sports": {
+      "count": 12697,
+      "total_revenue": 17732270.2,
+      "total_qty": 70211,
+      "avg_revenue": 1396.57,
+      "median_revenue": 1064.48,
+      "std_dev": 1156.77,
+      "min": 5.14,
+      "max": 4996.4
+    },
+    "Food": {
+      "count": 12498,
+      "total_revenue": 17176774.44,
+      "total_qty": 68605,
+      "avg_revenue": 1374.36,
+      "median_revenue": 1025.01,
+      "std_dev": 1150.94,
+      "min": 5.35,
+      "max": 4998.3
+    },
+    "Home": {
+      "count": 12612,
+      "total_revenue": 17425586.67,
+      "total_qty": 69175,
+      "avg_revenue": 1381.67,
+      "median_revenue": 1067.68,
+      "std_dev": 1129.33,
+      "min": 5.69,
+      "max": 4999.2
+    },
+    "Beauty": {
+      "count": 12523,
+      "total_revenue": 17256251.18,
+      "total_qty": 69485,
+      "avg_revenue": 1377.96,
+      "median_revenue": 1044.7,
+      "std_dev": 1141.44,
+      "min": 5.16,
+      "max": 4997.0
+    },
+    "Toys": {
+      "count": 12510,
+      "total_revenue": 17346911.79,
+      "total_qty": 68712,
+      "avg_revenue": 1386.64,
+      "median_revenue": 1080.0,
+      "std_dev": 1133.99,
+      "min": 5.27,
+      "max": 4992.6
+    }
+  },
+  "regions": {
+    "North": {
+      "count": 20253,
+      "total_revenue": 27997947.68,
+      "total_qty": 111592
+    },
+    "Central": {
+      "count": 19896,
+      "total_revenue": 27483076.44,
+      "total_qty": 109341
+    },
+    "South": {
+      "count": 20207,
+      "total_revenue": 28196730.49,
+      "total_qty": 111763
+    },
+    "East": {
+      "count": 19859,
+      "total_revenue": 27632107.15,
+      "total_qty": 109403
+    },
+    "West": {
+      "count": 19785,
+      "total_revenue": 27308551.24,
+      "total_qty": 108951
+    }
+  },
+  "top_products": [
+    {
+      "product": "Dumbbell Set",
+      "revenue": 3704618.81
+    },
+    {
+      "product": "Usb Hub",
+      "revenue": 3598554.44
+    },
+    {
+      "product": "Rc Car",
+      "revenue": 3592613.52
+    },
+    {
+      "product": "Hoodie Cotton",
+      "revenue": 3572385.96
+    },
+    {
+      "product": "Clean Code",
+      "revenue": 3572197.77
+    },
+    {
+      "product": "Standing Desk",
+      "revenue": 3568610.91
+    },
+    {
+      "product": "Jump Rope",
+      "revenue": 3567668.87
+    },
+    {
+      "product": "Yoga Mat",
+      "revenue": 3543213.34
+    },
+    {
+      "product": "Desk Lamp",
+      "revenue": 3532973.33
+    },
+    {
+      "product": "Face Cream",
+      "revenue": 3523089.96
+    }
+  ],
+  "monthly_revenue": [
+    {
+      "month": "2023-01",
+      "revenue": 11904955.65
+    },
+    {
+      "month": "2023-02",
+      "revenue": 10668759.42
+    },
+    {
+      "month": "2023-03",
+      "revenue": 11814483.01
+    },
+    {
+      "month": "2023-04",
+      "revenue": 11397908.89
+    },
+    {
+      "month": "2023-05",
+      "revenue": 11960539.37
+    },
+    {
+      "month": "2023-06",
+      "revenue": 11174606.05
+    },
+    {
+      "month": "2023-07",
+      "revenue": 11655067.61
+    },
+    {
+      "month": "2023-08",
+      "revenue": 11799837.51
+    },
+    {
+      "month": "2023-09",
+      "revenue": 11442450.84
+    },
+    {
+      "month": "2023-10",
+      "revenue": 11588429.95
+    },
+    {
+      "month": "2023-11",
+      "revenue": 11304286.04
+    },
+    {
+      "month": "2023-12",
+      "revenue": 11907088.66
+    }
+  ]
+}

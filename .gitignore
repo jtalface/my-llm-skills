@@ -1,0 +1,2 @@
+# Ignore node_modules in all skills
+skills/**/node_modules/
