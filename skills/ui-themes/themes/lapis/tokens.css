@@ -1,0 +1,92 @@
+/* Lapis — product inbox look (single mode, light SaaS). */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Extracted from a product inbox app */
+  --bg: #f5f6f8;
+  --bg-elevated: #ffffff;
+  --bg-panel: #ffffff;
+  --line: #e2e8f0;
+  --text: #0f172a;
+  --muted: #526077;
+  --accent: #4f46e5;
+  --accent-dim: #4338ca;
+  --accent-soft: #eef0ff;
+  --danger: #dc2626;
+  --focus: #4f46e5;
+  --accent-ink: #ffffff;
+  --code: #4338ca;
+  --brand-mark: #4f46e5;
+  --glow-a: #e8eaf6;
+  --glow-b: #eef2ff;
+
+  --radius: 0.75rem;
+  --radius-control: 0.5rem;
+
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-base: 16px;
+  --leading: 1.5;
+  --sidebar-width: minmax(240px, 280px);
+  --content-max: 960px;
+  --bp-stack: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1000px 500px at 0% 0%, var(--glow-a) 0%, transparent 50%),
+    radial-gradient(900px 480px at 100% 0%, var(--glow-b) 0%, transparent 45%),
+    var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--leading);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code,
+kbd {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: var(--code);
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: none;
+}
+
+@keyframes lapis-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

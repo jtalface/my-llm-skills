@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lime Lab Light</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="components.css" />
+    <style>
+      .ll-brand__mark { color: var(--accent-dim); }
+    </style>
+  </head>
+  <body>
+    <div class="ll-shell">
+      <aside class="ll-sidebar">
+        <div>
+          <p class="ll-brand__mark">Lime Lab</p>
+          <h1 class="ll-brand__title">Playground</h1>
+          <p class="ll-brand__tag">Implement data structures, then poke them live.</p>
+        </div>
+        <nav class="ll-nav">
+          <button type="button" class="ll-nav__item is-active">
+            <span>Graph</span><span class="ll-nav__meta">graph</span>
+          </button>
+          <button type="button" class="ll-nav__item">
+            <span>Linked List</span><span class="ll-nav__meta">linear</span>
+          </button>
+        </nav>
+      </aside>
+      <main class="ll-main">
+        <div class="ll-stack">
+          <header class="ll-header">
+            <div>
+              <h2>Graph</h2>
+              <p>Adjacency list · directed edges · optional weights</p>
+            </div>
+            <div class="ll-row">
+              <span class="ll-pill">size 3</span>
+              <span class="ll-pill">active</span>
+            </div>
+          </header>
+          <div class="ll-row">
+            <button type="button" class="ll-btn ll-btn--ghost">Load demo</button>
+            <button type="button" class="ll-btn ll-btn--ghost">Reset</button>
+          </div>
+          <section class="ll-panel">
+            <h3 class="ll-panel__label">Add node</h3>
+            <div class="ll-row">
+              <input class="ll-input" placeholder="Node value" />
+              <button type="button" class="ll-btn">Add</button>
+            </div>
+          </section>
+          <section class="ll-panel">
+            <h3 class="ll-panel__label">Nodes</h3>
+            <div class="ll-card" style="margin-bottom: 0.65rem">
+              <strong style="font-family: var(--font-display)">Alice</strong>
+              <code style="margin-left: 0.5rem">0b3065a5</code>
+              <span class="ll-chip" style="margin-left: 0.5rem">→ Bob</span>
+            </div>
+            <div class="ll-card">
+              <strong style="font-family: var(--font-display)">Bob</strong>
+              <code style="margin-left: 0.5rem">6f242ea1</code>
+              <span class="ll-chip" style="margin-left: 0.5rem">→ Carol</span>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+/* Lime Lab Dark — design tokens + base. Copy into global CSS. */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap');
+
+:root {
+  --bg: #0f1412;
+  --bg-elevated: #171d1a;
+  --bg-panel: #1c2420;
+  --line: #2a3530;
+  --text: #e7efe9;
+  --muted: #8a9a91;
+  --accent: #c8f542;
+  --accent-dim: #9bbb2e;
+  --danger: #ff6b5a;
+  --focus: #7dd3c0;
+  --accent-ink: #10140f;
+
+  --radius: 10px;
+  --radius-control: 8px;
+
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-base: 14px;
+  --leading: 1.5;
+  --sidebar-width: minmax(240px, 300px);
+  --content-max: 960px;
+  --bp-stack: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #1a2a22 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #1a2228 0%, transparent 50%),
+    var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--leading);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code,
+kbd {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--accent);
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: none;
+}
+
+@keyframes lime-lab-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
