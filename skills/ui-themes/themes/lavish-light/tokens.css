@@ -1,0 +1,90 @@
+/* Lavish Light — champagne / cream counterpart to DaisyUI luxury. */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f7f0e6;
+  --bg-elevated: #efe6d8;
+  --bg-panel: #fffaf3;
+  --line: #e0d2bc;
+  --text: #1a1208;
+  --muted: #6b5a45;
+  --accent: #09090b;
+  --accent-dim: #a67c2d;
+  --danger: #c94444;
+  --focus: #2a7a9d;
+  --accent-ink: #ffe7a4;
+  --code: #8a5a10;
+  --brand-mark: #a67c2d;
+  --glow-a: #f0e2c8;
+  --glow-b: #e8dcc8;
+
+  --radius: 1rem;
+  --radius-control: 0.5rem;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'DM Sans', system-ui, sans-serif;
+  --font-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-base: 15px;
+  --leading: 1.55;
+  --sidebar-width: minmax(240px, 300px);
+  --content-max: 960px;
+  --bp-stack: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 560px at 8% -8%, var(--glow-a) 0%, transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, var(--glow-b) 0%, transparent 50%),
+    var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--leading);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code,
+kbd {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: var(--code);
+}
+
+a {
+  color: var(--accent-dim);
+}
+
+:focus-visible {
+  outline: none;
+}
+
+@keyframes lavish-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

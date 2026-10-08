@@ -1,0 +1,95 @@
+/* Ledger Dark — warm charcoal counterpart to Ledger Light */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #141311;
+  --bg-elevated: #1c1b19;
+  --bg-panel: #22211e;
+  --line: rgba(255, 255, 255, 0.1);
+  --text: #f4f2ee;
+  --muted: #a9a6a0;
+  --body: #d5d2cb;
+  /* Invert TT black CTA → cream CTA; violet stays brand */
+  --accent: #f4f2ee;
+  --accent-dim: #9c93ff;
+  --accent-soft: #2a2648;
+  --danger: #e07a6a;
+  --focus: #9c93ff;
+  --accent-ink: #111110;
+  --code: #9c93ff;
+  --brand-mark: #9c93ff;
+  --pos: #3dbe7a;
+  --glow-a: #1f1c18;
+  --glow-b: #1a1830;
+
+  --radius: 14px;
+  --radius-control: 8px;
+
+  --font-display: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'Instrument Sans', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-base: 16px;
+  --leading: 1.5;
+  --sidebar-width: minmax(240px, 300px);
+  --content-max: 960px;
+  --bp-stack: 860px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 520px at 10% -10%, var(--glow-a) 0%, transparent 55%),
+    radial-gradient(900px 480px at 100% 0%, var(--glow-b) 0%, transparent 50%),
+    var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--leading);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code,
+kbd {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  color: var(--code);
+}
+
+a {
+  color: var(--accent-dim);
+}
+
+:focus-visible {
+  outline: none;
+}
+
+@keyframes ledger-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

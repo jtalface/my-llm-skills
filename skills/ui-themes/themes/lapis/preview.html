@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lapis</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+</head>
+<body>
+  <div class="lp-shell">
+    <aside class="lp-sidebar">
+      <div>
+        <p class="lp-brand__mark">Lapis</p>
+        <h1 class="lp-brand__title">Inbox</h1>
+        <p class="lp-brand__tag">Lapis — indigo SaaS, single mode.</p>
+      </div>
+      <nav class="lp-nav">
+        <button type="button" class="lp-nav__item is-active"><span>Inbox</span><span class="lp-nav__meta">main</span></button>
+        <button type="button" class="lp-nav__item"><span>Home</span><span class="lp-nav__meta">app</span></button>
+      </nav>
+    </aside>
+    <main class="lp-main">
+      <div class="lp-stack">
+        <header class="lp-header">
+          <div>
+            <h2>Unread</h2>
+            <p>Mentions · sample inbox</p>
+          </div>
+          <button type="button" class="lp-btn">Primary</button>
+        </header>
+        <section class="lp-panel">
+          <h3 class="lp-panel__label">Notifications</h3>
+          <div class="lp-card" style="margin-bottom:0.65rem">
+            <strong style="font-family:var(--font-display)">Maria mentioned you</strong>
+            <p class="lp-muted" style="margin-top:0.35rem">Can you review the Q3 deck?</p>
+          </div>
+          <div class="lp-card">
+            <strong style="font-family:var(--font-display)">System</strong>
+            <p class="lp-muted" style="margin-top:0.35rem">Deploy finished · <code>n_88</code></p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
